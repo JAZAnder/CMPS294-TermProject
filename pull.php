@@ -5,7 +5,7 @@
 </head>
 <body>
 <?php
-$output = shell_exec('ls -lart');
+$output = shell_exec('git pull');
 echo "<pre>$output</pre>";
 ?>
 </body>
