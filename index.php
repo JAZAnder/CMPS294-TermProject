@@ -1,3 +1,22 @@
+<?php
+$cookie_name = "user";
+if(((empty($_GET['userName'])) && empty($_COOKIE['user'] ))){
+    $cookie_value = "";
+    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+}
+if(!(empty($_GET['userName'])) && empty($_COOKIE['user'] )){
+    $cookie_value = $_GET['userName'];
+    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+}
+if (!(empty($_GET['userName']))) {
+    if ($_GET['userName'] == 'logout') {
+        $cookie_value = "";
+        setcookie($cookie_name, $cookie_value, time() + (-20), "/"); // 86400 = 1 day
+    }
+}
+
+
+?>
 <!DOCTYPE >
 <html>
     <head>
@@ -9,7 +28,7 @@
             <!-- Server Login and Database Selection -->
             <?php 
             include './logincred.php';
-            $conn = new mysqli($host, $user, $pass, $database);
+            
             ?>
             <!-- The Add an the Delete Functions -->
             <?php
@@ -35,7 +54,26 @@
         
         <!--Begining of HTML -->
         <h1>Book Inventory Managenment</h1>
+
+         <?php 
+            if(empty($_COOKIE['user'])) {
+                echo '<form action="./index.php" method="GET">
+                <input type="text" name="userName" placeholder="User Name">    
+                <input type="submit" value="Login x2">
+                      </form>';
+            }       
+        else {
+                echo "<h2>Welcome Back, " . $_COOKIE[$cookie_name]."  ";
+                echo '<a href="./index.php?userName=logout"><button>Logout x2</button></a>';
+                echo "</h2>";
+                
+            }
+        ?>
+
         <hr/>
+
+       
+
         <?php
             //Sets the Form Handler to be this file.
             $script = $_SERVER['SCRIPT_NAME']; 
@@ -62,9 +100,6 @@
             //Runs the search.php, if the User Selected to preform the Search Operation 
             if($Operation == "Search"){
                     include './operations/search.php';
-            }
-            if($Operation == "Edit"){
-                include './operations/edit.php';
             }
         ?>
     </body>
