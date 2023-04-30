@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Apr 29, 2023 at 06:10 AM
+-- Generation Time: Apr 30, 2023 at 05:20 AM
 -- Server version: 8.0.32
 -- PHP Version: 8.1.17
 
@@ -44,8 +44,10 @@ CREATE TABLE `Books` (
 INSERT INTO `Books` (`Title`, `Author`, `ISBN`, `Publisher`, `Year`, `imagePath`, `Active`) VALUES
 ('The Hidden Ivies, 3rd Edition: 63 of America\'s Top Liberal Arts Colleges and Universities (Greene\'s Guides)', 'Howard Greene', 62420909, 'Collins Reference', 2016, '/images/default.png', 1),
 ('Colleges That Change Lives: 40 Schools That Will Change the Way You Think About Colleges', 'Loren Pope', 143122304, 'Penguin Books', 2012, '/images/default.png', 1),
+('Blood Meridian: Or the Evening Redness in the West', 'Cormac McCarthy', 679728759, ' Knopf Doubleday Publishing Group', 1992, '/images/default.png', 1),
 (' PWN the SAT: Math Guide', 'Mike McClenathan', 692984364, 'PWN Test Prep', 2022, '/images/default.png', 1),
 ('Magnus Chase and the Gods of Asgard', ' Rick Riordan', 1423163370, 'Disney-Hyperion', 2017, '/images/default.png', 1),
+('1984', ' George Orwell ', 9780451524935, 'Signet Classic', 1961, '/images/default.png', 1),
 ('The Lightning Thief', 'Rick Riordan', 9780786838653, 'Disney-Hyperion', 2006, '/images/default.png', 1);
 
 -- --------------------------------------------------------
@@ -60,6 +62,14 @@ CREATE TABLE `cart` (
   `volume` int NOT NULL DEFAULT '1',
   `ID` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cookie`, `ISBN`, `volume`, `ID`) VALUES
+('jcantu', 9780786838653, 1, 6),
+('jcantu', 679728759, 3, 30);
 
 --
 -- Indexes for dumped tables
@@ -86,7 +96,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables

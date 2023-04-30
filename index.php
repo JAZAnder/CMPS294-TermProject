@@ -62,11 +62,13 @@ if (!(empty($_GET['userName']))) {
                 <input type="submit" value="Login x2">
                       </form>';
             }       
-        else {
+        else {  echo "<div style='display:flex; width:100vw; flex-direction: row'>";
                 echo "<h2>Welcome Back, " . $_COOKIE[$cookie_name]."  ";
                 echo '<a href="./index.php?userName=logout"><button>Logout x2</button></a>';
+                echo "<span style='width:200px'>      </span>";
+                echo "<a href='./cart.php'><img  src='https://static.vecteezy.com/system/resources/previews/000/356/583/original/vector-shopping-cart-icon.jpg' width='45px' /></a>";
                 echo "</h2>";
-                
+                echo "</div>";
             }
         ?>
 
