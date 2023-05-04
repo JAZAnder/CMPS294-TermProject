@@ -1,22 +1,3 @@
-<?php
-$cookie_name = "user";
-if(((empty($_GET['userName'])) && empty($_COOKIE['user'] ))){
-    $cookie_value = "";
-    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-}
-if(!(empty($_GET['userName'])) && empty($_COOKIE['user'] )){
-    $cookie_value = $_GET['userName'];
-    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-}
-if (!(empty($_GET['userName']))) {
-    if ($_GET['userName'] == 'logout') {
-        $cookie_value = "";
-        setcookie($cookie_name, $cookie_value, time() + (-20), "/"); // 86400 = 1 day
-    }
-}
-
-
-?>
 <!DOCTYPE >
 <html>
     <head>
@@ -24,9 +5,11 @@ if (!(empty($_GET['userName']))) {
     </head>
     <title>Assignment</title>
     <body>
+
         <div>
             <!-- Server Login and Database Selection -->
             <?php 
+            $cookie_name = "user";
             include './logincred.php';
             
             ?>
@@ -54,19 +37,16 @@ if (!(empty($_GET['userName']))) {
         
         <!--Begining of HTML -->
         <h1>Book Inventory Managenment</h1>
-
          <?php 
             if(empty($_COOKIE['user'])) {
-                echo '<form action="./index.php" method="GET">
-                <input type="text" name="userName" placeholder="User Name">    
-                <input type="submit" value="Login x2">
-                      </form>';
+                echo '<input type="text" id="userName" placeholder="User Name">    
+                <button type="button" onclick="login()">Login</button>';
             }       
         else {  echo "<div style='display:flex; width:100vw; flex-direction: row'>";
                 echo "<h2>Welcome Back, " . $_COOKIE[$cookie_name]."  ";
-                echo '<a href="./index.php?userName=logout"><button>Logout x2</button></a>';
+                echo '<button type="button" onclick="logout()">Logout</button>';
                 echo "<span style='width:200px'>      </span>";
-                echo "<a href='./cart.php'><img  src='https://static.vecteezy.com/system/resources/previews/000/356/583/original/vector-shopping-cart-icon.jpg' width='45px' /></a>";
+                echo "<a href='./cart.php'><img  src='./images/cart.jpg' width='45px' /></a>";
                 echo "</h2>";
                 echo "</div>";
             }

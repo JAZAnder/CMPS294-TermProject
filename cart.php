@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php include './logincred.php' ?>
+
+
 <?php 
 if ((!(empty($_GET['isbn'])))&&(!(empty($_GET['cookie'])))) {
     $cookie = $_GET['cookie'];
@@ -31,17 +33,24 @@ if ((!(empty($_GET['action'])))) {
     if ($_GET['action'] == 'remove') {
         $isbn = $_GET['isbn'];
         $query ="DELETE FROM `cart` WHERE `cookie` = '"."$_COOKIE[user]"."' AND `ISBN` = '"."$isbn"."'; ";
-        //echo $query;
+        $conn->query($query);
+    }elseif ($_GET['action'] == 'update') {
+        $isbn = $_GET['isbn'];
+        $query = "UPDATE `cart` SET `volume`='"."$_GET[count]"."' WHERE `ISBN` = '"."$isbn"."' AND `cookie`= '"."$_COOKIE[user]"."';";
         $conn->query($query);
     }
 }
+
+
+
 ?>
 <html>
 <head>
-    <title>Document</title>
+    <title>CART</title>
 </head>
 <body>
     <?php
+     
         $query = "SELECT `cart`.`volume`, `Books`.*
                     FROM `cart` 
                         LEFT JOIN `Books` ON `cart`.`ISBN` = `Books`.`ISBN`
