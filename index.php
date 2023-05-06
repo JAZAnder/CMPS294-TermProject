@@ -5,13 +5,11 @@
     </head>
     <title>Assignment</title>
     <body>
-
         <div>
             <!-- Server Login and Database Selection -->
             <?php 
             $cookie_name = "user";
             include './logincred.php';
-            
             ?>
             <!-- The Add an the Delete Functions -->
             <?php
@@ -24,12 +22,10 @@
                 $Year = "";
                 //Extracting the Input
                 extract($_POST);
-                //Runs the add.php, if the User Selected to preform the Add Operation 
-                if($Operation == "Add"){
+                if ($Operation == "Add") { //Runs the add.php, if the User Selected to preform the Add Operation 
                     include './operations/add.php';
                 }
-                //Runs the delete.php, if the User Selected to preform the Delete Operation 
-                if($Operation == "Delete"){
+                if ($Operation == "Delete") {//Runs the delete.php, if the User Selected to perform the Delete Operation 
                     include './operations/delete.php';
                 }
             ?>
@@ -46,16 +42,12 @@
                 echo "<h2>Welcome Back, " . $_COOKIE[$cookie_name]."  ";
                 echo '<button type="button" onclick="logout()">Logout</button>';
                 echo "<span style='width:200px'>      </span>";
-                echo "<a href='./cart.php'><img  src='./images/cart.jpg' width='45px' /></a>";
+                echo "<a href='./cart.php'><img border='2px solid purple'src='./images/cart.jpg' width='45px' /></a>";
                 echo "</h2>";
                 echo "</div>";
             }
         ?>
-
         <hr/>
-
-       
-
         <?php
             //Sets the Form Handler to be this file.
             $script = $_SERVER['SCRIPT_NAME']; 
@@ -69,12 +61,7 @@
                 <input type="submit" value="Search">
                 <button onclick="advancedSearch()">Advanced</button>
             </div>
-
-
-
             <hr/>
-            <!--List all the Text Feilds for Actions-->
-
         </form>
         <!--Link to the Database in text Format-->
         <hr/>

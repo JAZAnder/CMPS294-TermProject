@@ -8,7 +8,7 @@ function basicSearch() {
     '<input type="hidden" value="Search" name="Operation"/>Search : <input type="text" name="Title" id=""><input type="submit" value="Search"><button onclick="advancedSearch()">Advanced</button>';
 }
 
-function changer() {
+function changer() { // This javascript function is used for the operations dropdown to change the options dynamically on the screen depending on the users choice.
   var option = document.getElementById("Operation").value;
 
   if (option == "Search") {
@@ -23,7 +23,7 @@ function changer() {
   }
 }
 
-function login() {
+function login() { // This is a javascript function that will set the cookie to the value that is inside the field and then reload the page.
  let username = document.getElementById("userName").value;
  document.cookie = 'user='+username;
   window.location.reload();
@@ -31,7 +31,7 @@ function login() {
   
 
 }
-function logout(){
+function logout(){ // This is a javascript function that will remove the cookie from the browser by setting it to nothing and then reload the page.
     document.cookie = "user=";
     window.location.reload();
 }

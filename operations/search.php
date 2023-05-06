@@ -1,8 +1,6 @@
 <?php 
-
 $sql = "SELECT * FROM `Books` WHERE `Title` LIKE '%$Title%' AND `Author` LIKE '%$Author%' AND `ISBN` LIKE '%$ISBN%' AND `Publisher` LIKE '%$Publisher%' AND `Year` LIKE '%$Year%'";
 $result = $conn->query($sql);
-
 if ($result->num_rows > 0) {
     // output data of each row
     echo '<table>';
@@ -38,6 +36,4 @@ if ($result->num_rows > 0) {
   } else {
     echo "No Results Match your Search";
   }
-
-
 ?>
